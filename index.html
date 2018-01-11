@@ -33,7 +33,7 @@
 <body ng-app="myapp" ng-controller="tableController">
     <h1>Coin Tracker</h1>
 
-    <table class="table table-stripe">
+    <table class="table table-stripe;sortable">
         <thead>
             <tr>
                 <th>Name</th>
@@ -59,7 +59,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script type="text/javascript">
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+	<script type="text/javascript">
         var app = angular.module("myapp", []);
         app.controller("tableController", ['$scope', '$http', function($scope, $http) {
 
