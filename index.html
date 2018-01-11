@@ -2,69 +2,55 @@
 <html lang="en">
 
 <head>
-   <style>
-      table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-      }
-      td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-      }
-      tr:nth-child(even) {
-      background-color: #dddddd;
-      }
-   </style>
-   
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" crossorigin="anonymous">
+<link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
     <title>Crypto Challenge</title>
 
 
 </head>
-<meta http-equiv="refresh" content="300">
-<body ng-app="myapp" ng-controller="tableController">
+
+<body ng-app="myapp" ng-controller="tableController as ctrl">
     <h1>Coin Tracker</h1>
 
-    <table class="table table-stripe;sortable">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Ticker</th>
-                <th> Starting BTC </th>
-                <th> Current BTC </th>
-                <th> %CHANGE </th>
-            </tr>
-        </thead>
+<table ng-table="ctrl.tableParams" class="table table-condensed table-bordered table-striped" show-filter="true">
+<!--	<table class="table table-stripe"> -->
+     <!--   <thead> -->
+     <!--       <tr> -->
+     <!--           <th>Name</th> -->
+     <!--           <th>Ticker</th> -->
+     <!--           <th>Starting BTC</th> -->
+     <!--           <th>Current BTC</th> -->
+     <!--           <th>%CHANGE</th> -->
+     <!--       </tr> -->
+    <!--    </thead> -->
         <tbody>
-            <tr ng-repeat="c in challengers">
-                <td> {{c.Name }}</td>
-                <td> {{ c.Ticker }} </td>
-                <td> {{ c.StartBtc }} </td>
-                <td> {{ c.CurrentBtc }} </td>
-				<td> {{ c.Change}}% </td> 
+            <tr ng-repeat="c in $data">
+                <td data-title="'Name'" sortable="'Name'"> {{c.Name }}</td>
+                <td data-title="'Ticker'" sortable="'Ticker'"> {{ c.Ticker }} </td>
+                <td data-title="'Starting BTC'" sortable="'StartBtc'"> {{ c.StartBtc }} </td>
+                <td data-title="'Current BTC'" sortable="'CurrentBtc'"> {{ c.CurrentBtc }} </td>
+				<td data-title="'Change'" sortable="'Change'"> {{ c.Change}} </td> 
             </tr>
         </tbody>
     </table>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
-	<script type="text/javascript">
-        var app = angular.module("myapp", []);
-        app.controller("tableController", ['$scope', '$http', function($scope, $http) {
-
-            var challengers = [{
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"  crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>	
+	<script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("myapp", ["ngTable"]);
+        app.controller("tableController",function ($scope, $http, NgTableParams) {
+			var self = this;
+          
+  		  var challengers = [{
                 'Name': 'Kalpesh Khatri',
                 'Ticker': 'Ethereum-Classic',
                 'StartBtc': 0.00246375,
@@ -72,7 +58,7 @@
 				'Change' :0,
             }, {
                 'Name': 'James Banner',
-                'Ticker': 'Digibyte',
+                'Ticker': 'DigiByte',
                 'StartBtc': 0.00000747,
                 'CurrentBtc': '0',
 				'Change' :0,
@@ -90,7 +76,7 @@
 				'Change' :0,
             }, {
                 'Name': 'Andrea Sodini',
-                'Ticker': 'Substratum',
+                'Ticker': 'Substratum  ',
                 'StartBtc': 0.00017278,
                 'CurrentBtc': '0',
 				'Change' :0,
@@ -101,9 +87,15 @@
                 'CurrentBtc': '0',
 				'Change' :0,
             }, {
+                'Name': 'David Dickson',
+                'Ticker': 'Monero',
+                'StartBtc': 0.02754730,
+                'CurrentBtc': '0',
+				'Change' :0,
+            }, {
                 'Name': 'Jack Parker',
                 'Ticker': 'Bitcoin',
-                'StartBtc': 1.00000000,
+                'StartBtc': 1,
                 'CurrentBtc': '0',
 				'Change' :0,
             }, {
@@ -114,27 +106,34 @@
 				'Change' :0,
             }];
 			
-			$scope.challengers = challengers;
+		//	this.tableParams = new NgTableParams({}, { dataset: challengers});
+		
+		//	$scope.challengers = challengers;
 
             var promise = [];
             challengers.forEach(function(c) {
                 promise.push(SetBtcPrice(c));
             });
 
-         /*   Promise.all(promise).then(function() {		
-                $scope.challengers = challengers;
+            Promise.all(promise).then(function() {		
+              //  $scope.challengers = challengers;
+			//	this.tableParams = new NgTableParams({ sorting: { Change: "desc" }},
+			//{ dataset: challengers});
+			  self.tableParams.sorting('Change', 'asc' );
             });
-*/
-		
+
+		this.tableParams = new NgTableParams({ sorting: { Name: "asc" }},
+			{ dataset: challengers});
+	
             function SetBtcPrice(challenger) {
 
               return  $http.get("https://api.coinmarketcap.com/v1/ticker/" + challenger.Ticker + "/")
                     .then(function(response) {
                         challenger.CurrentBtc = response.data[0].price_btc;
-						challenger.Change = (((challenger.CurrentBtc-challenger.StartBtc)/challenger.StartBtc)*100).toFixed(5);
+						challenger.Change = (((challenger.CurrentBtc-challenger.StartBtc)/challenger.StartBtc)*100);
                     });
             }
-        }]);
+        });
     </script>
 </body>
 
