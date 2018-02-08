@@ -54,73 +54,93 @@
   		  var challengers = [{
                 'Name': 'Kalpesh Khatri',
 		'Position': 'Long',
+		'pos-index': 1,
                 'Ticker': 'Ethereum-Classic',
                 'StartBtc': 0.00246375,
                 'CurrentBtc': '0',
-				'Change' :0,
+		'Change' :0,
+		'Gain' :0,
             }, {
                 'Name': 'James Banner',
 		'Position': 'Long',    
+		'pos-index': 1,
                 'Ticker': 'DigiByte',
                 'StartBtc': 0.00000747,
                 'CurrentBtc': '0',
-				'Change' :0,
+		'Change' :0,
+		'Gain' :0,
             }, {
                 'Name': 'Tim Hegh',
 		'Position': 'Long',
+		'pos-index': 1,
                 'Ticker': 'Ripple',
                 'StartBtc': 0.00013168,
                 'CurrentBtc': '0',
-				'Change' :0,
+		'Change' :0,
+		'Gain' :0,
             }, {
                 'Name': 'Kim Tran',
 		'Position': 'Long',
+		'pos-index': 1,
                 'Ticker': 'Qtum',
                 'StartBtc': 0.00360578,
                 'CurrentBtc': '0',
-				'Change' :0,
+		'Change' :0,
+		'Gain' :0,
             }, {
                 'Name': 'Andrea Sodini',
 		'Position': 'Long',
+		'pos-index': 1,
                 'Ticker': 'Substratum  ',
                 'StartBtc': 0.00017278,
                 'CurrentBtc': '0',
-				'Change' :0,
+		'Change' :0,
+		'Gain' :0,
             }, {
                 'Name': 'David Chung',
-		'Position': 'Long',
+		'Position': 'Short',
+		'pos-index': -1,
                 'Ticker': 'Utrust',
                 'StartBtc': 0.00007302,
                 'CurrentBtc': '0',
-				'Change' :0,
+		'Change' :0,
+		'Gain' :0,
             }, {
                 'Name': 'David Dickson',
 		'Position': 'Long',
+		'pos-index': 1,
                 'Ticker': 'Monero',
                 'StartBtc': 0.02718570,
                 'CurrentBtc': '0',
-				'Change' :0,
+		'Change' :0,
+		'Gain' :0,
             }, {
                 'Name': 'Jack Parker',
 		'Position': 'Long',
+		'pos-index': 1,
                 'Ticker': 'Bitcoin',
                 'StartBtc': 1,
                 'CurrentBtc': '0',
-				'Change' :0,
+		'Change' :0,
+		'Gain' :0,
             }, {
                 'Name': 'Robert Patterson',
-		'Position': 'Long',
+		'Position': 'Short',
+	        'pos-index': -1,
                 'Ticker': 'Bread',
                 'StartBtc': 0.00018388,
                 'CurrentBtc': '0',
-				'Change' :0,
+		'Change' :0,
+		'Gain' :0,
             }, {
                 'Name': 'Joel Akins',
-		'Position': 'Long',
+		'Position': 'Short',
+		'pos-index': -1,
                 'Ticker': 'enigma-project',
                 'StartBtc': 0.00053001,
                 'CurrentBtc': '0',
-				'Change' :0,
+		'Change' :0,
+		'Gain' :0,
             }
 				    
 				    
@@ -150,7 +170,9 @@
               return  $http.get("https://api.coinmarketcap.com/v1/ticker/" + challenger.Ticker + "/")
                     .then(function(response) {
                         challenger.CurrentBtc = response.data[0].price_btc;
-						challenger.Change = (((challenger.CurrentBtc-challenger.StartBtc)/challenger.StartBtc)*100);
+			challenger.Change = (((challenger.CurrentBtc-challenger.StartBtc)/challenger.StartBtc)*100);
+		        challenger.Gain = (((challenger.CurrentBtc-challenger.StartBtc)/challenger.StartBtc)*100*challenger.pos-index);
+		  
                     });
             }
         });
