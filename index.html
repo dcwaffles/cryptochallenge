@@ -35,8 +35,8 @@
                 <td data-title="'Ticker'" sortable="'Ticker'"> {{ c.Ticker }} </td>
                 <td data-title="'Starting BTC'" sortable="'StartBtc'"> {{ c.StartBtc }} </td>
                 <td data-title="'Current BTC'" sortable="'CurrentBtc'"> {{ c.CurrentBtc }} </td>
-		<td data-title="'Change'" sortable="'Change'"> {{ c.Change}} </td> 
-		<td data-title="'Gain'" sortable="'Gain'"> {{ c.Gain}} </td> 
+		<td data-title="'Change'" sortable="'Change'"> {{ c.Change }} </td> 
+		<td data-title="'Gain'" sortable="'Gain'"> {{ c.Gain }} </td> 
             </tr>
         </tbody>
     </table>
@@ -55,7 +55,7 @@
   		  var challengers = [{
                 'Name': 'Kalpesh Khatri',
 		'Position': 'Long',
-		'pos-index': 1,
+		'PosIndex': 1,
                 'Ticker': 'Ethereum-Classic',
                 'StartBtc': 0.00246375,
                 'CurrentBtc': '0',
@@ -64,7 +64,7 @@
             }, {
                 'Name': 'James Banner',
 		'Position': 'Long',    
-		'pos-index': 1,
+		'PosIndex': 1,
                 'Ticker': 'DigiByte',
                 'StartBtc': 0.00000747,
                 'CurrentBtc': '0',
@@ -73,7 +73,7 @@
             }, {
                 'Name': 'Tim Hegh',
 		'Position': 'Long',
-		'pos-index': 1,
+		'PosIndex': 1,
                 'Ticker': 'Ripple',
                 'StartBtc': 0.00013168,
                 'CurrentBtc': '0',
@@ -82,7 +82,7 @@
             }, {
                 'Name': 'Kim Tran',
 		'Position': 'Long',
-		'pos-index': 1,
+		'PosIndex': 1,
                 'Ticker': 'Qtum',
                 'StartBtc': 0.00360578,
                 'CurrentBtc': '0',
@@ -91,7 +91,7 @@
             }, {
                 'Name': 'Andrea Sodini',
 		'Position': 'Long',
-		'pos-index': 1,
+		'PosIndex': 1,
                 'Ticker': 'Substratum  ',
                 'StartBtc': 0.00017278,
                 'CurrentBtc': '0',
@@ -100,7 +100,7 @@
             }, {
                 'Name': 'David Chung',
 		'Position': 'Short',
-		'pos-index': -1,
+		'PosIndex': -1,
                 'Ticker': 'Utrust',
                 'StartBtc': 0.00007302,
                 'CurrentBtc': '0',
@@ -109,7 +109,7 @@
             }, {
                 'Name': 'David Dickson',
 		'Position': 'Long',
-		'pos-index': 1,
+		'PosIndex': 1,
                 'Ticker': 'Monero',
                 'StartBtc': 0.02718570,
                 'CurrentBtc': '0',
@@ -118,7 +118,7 @@
             }, {
                 'Name': 'Jack Parker',
 		'Position': 'Long',
-		'pos-index': 1,
+		'PosIndex': 1,
                 'Ticker': 'Bitcoin',
                 'StartBtc': 1,
                 'CurrentBtc': '0',
@@ -127,7 +127,7 @@
             }, {
                 'Name': 'Robert Patterson',
 		'Position': 'Short',
-	        'pos-index': -1,
+	        'PosIndex': -1,
                 'Ticker': 'Bread',
                 'StartBtc': 0.00018388,
                 'CurrentBtc': '0',
@@ -136,7 +136,7 @@
             }, {
                 'Name': 'Joel Akins',
 		'Position': 'Short',
-		'pos-index': -1,
+		'PosIndex': -1,
                 'Ticker': 'enigma-project',
                 'StartBtc': 0.00053001,
                 'CurrentBtc': '0',
@@ -172,7 +172,7 @@
                     .then(function(response) {
                         challenger.CurrentBtc = response.data[0].price_btc;
 			challenger.Change = (((challenger.CurrentBtc-challenger.StartBtc)/challenger.StartBtc)*100);
-		        challenger.Gain = (((challenger.CurrentBtc-challenger.StartBtc)/challenger.StartBtc)*100*challenger.pos-index);
+		        challenger.Gain = challenger.Change*challenger.PosIndex;
 		  
                     });
             }
